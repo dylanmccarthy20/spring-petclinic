@@ -25,3 +25,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 't00211105/petclinic'
+    command: 'build'
+    Dockerfile: '**/Dockerfile'
+    tags: 'petclinic'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 't00211105/petclinic'
+    command: 'push'
+    tags: 'petclinic'
