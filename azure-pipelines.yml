@@ -33,9 +33,6 @@ steps:
     publishJUnitResults: false
     jdkVersionOption: '1.11'
 
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerHub'
@@ -49,3 +46,7 @@ steps:
     repository: 't00211105/petclinic'
     command: 'push'
     tags: 'petclinic'
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
