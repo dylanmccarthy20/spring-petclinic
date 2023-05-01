@@ -28,6 +28,13 @@ steps:
 - task: SonarCloudPublish@1
   inputs:
     pollingTimeoutSec: '300'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'sonarcloud'
+    organization: 'dylanmccarthy20'
+    scannerMode: 'MSBuild'
+    projectKey: 'dylanmccarthy20.DevOpsProject'
+    projectName: 'DevOpsProject'
 - task: Maven@3
   displayName: Build Docker image
   inputs:
