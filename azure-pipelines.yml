@@ -25,9 +25,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'sonarcloud'
@@ -35,6 +33,10 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'dylanmccarthy20.DevOpsProject'
     projectName: 'DevOpsProject'
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
 - task: Maven@3
   displayName: Build Docker image
   inputs:
