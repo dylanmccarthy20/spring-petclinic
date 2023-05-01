@@ -25,6 +25,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: Maven@3
   displayName: Build Docker image
   inputs:
@@ -47,6 +50,3 @@ steps:
     command: 'push'
     tags: 'petclinic'
 
-#- task: SonarCloudPublish@1
- # inputs:
-  #  pollingTimeoutSec: '300'
